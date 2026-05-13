@@ -1,7 +1,7 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
 const corsHeaders = {
-  'Access-Control-Allow-Origin': '*', // Restrict to your GitHub Pages URL in production
+  'Access-Control-Allow-Origin': 'https://peterrdavid.github.io', // Restrict to your GitHub Pages URL in production
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 
