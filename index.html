@@ -366,30 +366,23 @@
       <div class="logo-icon">
         <svg viewBox="0 0 24 24"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/></svg>
       </div>
-      <div class="logo-text">Angkas <span>× DSWD</span></div>
+      <div class="logo-text">Angkas <span>- DSWD</span></div>
     </div>
 
     <div class="card">
       <div class="card-title">Driver Eligibility Check</div>
-      <p class="card-subtitle">Enter or scan your driver's license number to verify your eligibility.</p>
+      <p class="card-subtitle">Enter your Driver ID to verify your eligibility.</p>
 
-      <label class="field-label" for="license">Driver's License No. (e.g. N01-23-456789) </label>
+      <label class="field-label" for="license">Driver ID (e.g. D1234567) </label>
       <div class="input-wrap">
         <input
           type="text"
           id="license"
           placeholder=""
-          maxlength="20"
+          maxlength="8"
           autocomplete="off"
           spellcheck="false"
         />
-        <button class="scan-btn" onclick="openCamera()" title="Scan license barcode">
-          <svg viewBox="0 0 24 24">
-            <path d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2"/>
-            <line x1="7" y1="12" x2="7" y2="12.01"/>
-            <line x1="10" y1="12" x2="17" y2="12"/>
-          </svg>
-        </button>
       </div>
 
       <button class="submit-btn" id="submitBtn" onclick="checkLicense()">Check Eligibility</button>
@@ -403,28 +396,11 @@
 
     <div class="footer">
       Handled in accordance with RA 10173 · Data Privacy Act of 2012<br>
-      For concerns, contact your DSWD field office.
+      For concerns, contact Angkas HQ.
     </div>
   </div>
 
-  <!-- Camera Modal -->
-  <div class="camera-modal" id="cameraModal">
-    <div class="camera-box">
-      <div class="camera-header">
-        <span>Scan License Barcode</span>
-        <button class="close-btn" onclick="closeCamera()">✕</button>
-      </div>
-      <div class="video-wrap">
-        <video id="video" autoplay playsinline muted></video>
-        <div class="scan-overlay">
-          <div class="scan-frame">
-            <div class="scan-line"></div>
-          </div>
-        </div>
-      </div>
-      <div class="camera-hint">Point the barcode on the back of your license at the camera</div>
-    </div>
-  </div>
+  
 
   <script>
     const EDGE_FUNCTION_URL = 'https://khnflhnjcedxkkxgawwf.supabase.co/functions/v1/check-license';
@@ -481,67 +457,6 @@
       if (e.key === 'Enter') checkLicense();
     });
 
-    // ── Camera / Barcode scan ──────────────────────────────
-    async function openCamera() {
-      try {
-        stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
-        document.getElementById('video').srcObject = stream;
-        document.getElementById('cameraModal').classList.add('open');
-        startScanning();
-      } catch {
-        alert('Camera access denied or not available on this device.');
-      }
-    }
-
-    function closeCamera() {
-      if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; }
-      if (scanInterval) { clearInterval(scanInterval); scanInterval = null; }
-      document.getElementById('cameraModal').classList.remove('open');
-      document.getElementById('video').srcObject = null;
-    }
-
-    function startScanning() {
-      const video = document.getElementById('video');
-
-      if ('BarcodeDetector' in window) {
-        // Native — Chrome/Android
-        const detector = new BarcodeDetector({ formats: ['pdf417', 'code_128', 'code_39', 'qr_code'] });
-        scanInterval = setInterval(async () => {
-          try {
-            const barcodes = await detector.detect(video);
-            if (barcodes.length > 0) {
-              const licenseNo = extractLicenseNumber(barcodes[0].rawValue);
-              if (licenseNo) { document.getElementById('license').value = licenseNo; closeCamera(); }
-            }
-          } catch { /* continue */ }
-        }, 400);
-      } else {
-        // ZXing fallback — Safari/Firefox
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/zxing-js/0.21.1/zxing.min.js';
-        script.onload = () => {
-          const codeReader = new ZXing.BrowserMultiFormatReader();
-          codeReader.decodeFromVideoElement(video, (result) => {
-            if (result) {
-              const licenseNo = extractLicenseNumber(result.getText());
-              if (licenseNo) { document.getElementById('license').value = licenseNo; codeReader.reset(); closeCamera(); }
-            }
-          });
-        };
-        document.head.appendChild(script);
-      }
-    }
-
-    function extractLicenseNumber(raw) {
-      if (!raw) return null;
-      // PH LTO format: e.g. N01-23-456789
-      const match = raw.match(/[A-Z]\d{2}-\d{2}-\d{6}/);
-      if (match) return match[0];
-      // Fallback: alphanumeric + dashes, 6–20 chars
-      const fallback = raw.trim().toUpperCase();
-      if (/^[A-Z0-9\-]{6,20}$/.test(fallback)) return fallback;
-      return null;
-    }
   </script>
 </body>
 </html>
