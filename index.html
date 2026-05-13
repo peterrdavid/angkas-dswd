@@ -65,22 +65,10 @@
       justify-content: center;
     }
 
-    .logo-icon svg {
-      width: 20px;
-      height: 20px;
-      fill: white;
-    }
+    .logo-icon svg { width: 20px; height: 20px; fill: white; }
 
-    .logo-text {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--accent-dark);
-    }
-
-    .logo-text span {
-      color: var(--muted);
-      font-weight: 500;
-    }
+    .logo-text { font-size: 1rem; font-weight: 700; color: var(--accent-dark); }
+    .logo-text span { color: var(--muted); font-weight: 500; }
 
     .card {
       background: var(--surface);
@@ -124,14 +112,13 @@
       font-size: 0.95rem;
       font-weight: 500;
       padding: 0.7rem 1rem;
-      padding-right: 3rem;
       border: 1.5px solid var(--border);
       border-radius: 10px;
       background: var(--bg);
       color: var(--text);
       outline: none;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.06em;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
 
@@ -145,136 +132,6 @@
       text-transform: none;
       letter-spacing: 0.01em;
       font-weight: 400;
-    }
-
-    .scan-btn {
-      position: absolute;
-      right: 0.6rem;
-      top: 50%;
-      transform: translateY(-50%);
-      background: var(--accent-light);
-      border: none;
-      border-radius: 6px;
-      width: 30px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: background 0.15s;
-      padding: 0;
-    }
-
-    .scan-btn:hover { background: #bae6fd; }
-
-    .scan-btn svg {
-      width: 16px;
-      height: 16px;
-      stroke: var(--accent-dark);
-      fill: none;
-      stroke-width: 1.8;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    /* Camera modal */
-    .camera-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.7);
-      z-index: 100;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-    }
-
-    .camera-modal.open { display: flex; }
-
-    .camera-box {
-      background: #fff;
-      border-radius: 16px;
-      overflow: hidden;
-      width: 100%;
-      max-width: 360px;
-    }
-
-    .camera-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 1.25rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .camera-header span {
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    .close-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: var(--muted);
-      font-size: 1.1rem;
-      line-height: 1;
-      padding: 0;
-    }
-
-    .close-btn:hover { color: var(--text); }
-
-    .video-wrap {
-      position: relative;
-      background: #000;
-    }
-
-    video {
-      width: 100%;
-      display: block;
-      max-height: 260px;
-      object-fit: cover;
-    }
-
-    .scan-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-    }
-
-    .scan-frame {
-      width: 200px;
-      height: 110px;
-      border: 2px solid var(--accent);
-      border-radius: 8px;
-      box-shadow: 0 0 0 2000px rgba(0,0,0,0.35);
-      position: relative;
-    }
-
-    .scan-line {
-      position: absolute;
-      left: 0; right: 0;
-      height: 2px;
-      background: var(--accent);
-      animation: scanMove 1.8s ease-in-out infinite;
-      opacity: 0.8;
-    }
-
-    @keyframes scanMove {
-      0%   { top: 8px; }
-      50%  { top: calc(100% - 10px); }
-      100% { top: 8px; }
-    }
-
-    .camera-hint {
-      padding: 0.85rem 1.25rem;
-      font-size: 0.72rem;
-      color: var(--muted);
-      text-align: center;
-      line-height: 1.5;
     }
 
     .submit-btn {
@@ -308,46 +165,97 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
+    /* Result box */
     .result {
       margin-top: 1rem;
-      padding: 1rem 1.1rem;
       border-radius: 10px;
       border: 1.5px solid var(--border);
-      font-size: 0.8rem;
-      line-height: 1.6;
       display: none;
+      overflow: hidden;
       animation: fadeUp 0.3s ease both;
     }
 
     .result.show { display: block; }
-    .result.eligible { border-color: var(--success-border); background: var(--success-bg); }
-    .result.ineligible { border-color: var(--error-border); background: var(--error-bg); }
+    .result.eligible { border-color: var(--success-border); }
+    .result.ineligible { border-color: var(--error-border); }
+
+    /* Status banner */
+    .result-banner {
+      padding: 0.75rem 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .result.eligible .result-banner { background: var(--success-bg); }
+    .result.ineligible .result-banner { background: var(--error-bg); }
 
     .result-tag {
       font-size: 0.68rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      display: block;
-      margin-bottom: 0.2rem;
     }
 
     .result.eligible .result-tag { color: var(--success); }
     .result.ineligible .result-tag { color: var(--error); }
 
     .result-title {
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 700;
-      margin-bottom: 0.3rem;
     }
 
     .result.eligible .result-title { color: var(--success); }
     .result.ineligible .result-title { color: var(--error); }
 
-    .result-instructions {
+    /* Driver details grid */
+    .result-details {
+      padding: 1rem 1.1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem 1rem;
+      background: var(--surface);
+    }
+
+    .detail-item {}
+
+    .detail-label {
+      font-size: 0.62rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.15rem;
+    }
+
+    .detail-value {
+      font-size: 0.82rem;
+      font-weight: 600;
       color: var(--text);
-      white-space: pre-line;
+    }
+
+    .detail-item.full-width {
+      grid-column: 1 / -1;
+    }
+
+    /* Platform badge */
+    .platform-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 20px;
+      text-transform: capitalize;
+      background: var(--accent-light);
+      color: var(--accent-dark);
+    }
+
+    /* Error message (no details) */
+    .result-error-msg {
+      padding: 0.75rem 1.1rem;
       font-size: 0.78rem;
+      color: var(--error);
+      background: var(--error-bg);
     }
 
     .footer {
@@ -366,31 +274,29 @@
       <div class="logo-icon">
         <svg viewBox="0 0 24 24"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/></svg>
       </div>
-      <div class="logo-text">Angkas <span>- DSWD</span></div>
+      <div class="logo-text">Angkas <span>× DSWD</span></div>
     </div>
 
     <div class="card">
       <div class="card-title">Driver Eligibility Check</div>
       <p class="card-subtitle">Enter your Driver ID to verify your eligibility.</p>
 
-      <label class="field-label" for="license">Driver ID (e.g. D1234567) </label>
+      <label class="field-label" for="driverInput">Driver ID</label>
       <div class="input-wrap">
         <input
           type="text"
-          id="license"
-          placeholder=""
+          id="driverInput"
+          placeholder="e.g. D1234567"
           maxlength="8"
           autocomplete="off"
           spellcheck="false"
         />
       </div>
 
-      <button class="submit-btn" id="submitBtn" onclick="checkLicense()">Check Eligibility</button>
+      <button class="submit-btn" id="submitBtn" onclick="checkDriver()">Check Eligibility</button>
 
       <div class="result" id="result">
-        <span class="result-tag" id="resultTag"></span>
-        <div class="result-title" id="resultTitle"></div>
-        <div class="result-instructions" id="resultInstructions"></div>
+        <!-- Filled by JS -->
       </div>
     </div>
 
@@ -400,63 +306,135 @@
     </div>
   </div>
 
-  
-
   <script>
     const EDGE_FUNCTION_URL = 'https://khnflhnjcedxkkxgawwf.supabase.co/functions/v1/check-license';
 
-    let stream = null;
-    let scanInterval = null;
-
-    async function checkLicense() {
-      const input = document.getElementById('license');
+    async function checkDriver() {
+      const input = document.getElementById('driverInput');
       const btn = document.getElementById('submitBtn');
-      const license = input.value.trim().toUpperCase();
+      const driverId = input.value.trim().toUpperCase();
 
-      if (!license) {
-        showResult('ineligible', 'Missing Input', 'Please enter a license number.');
+      if (!driverId) {
+        showError('Please enter your Driver ID.');
+        return;
+      }
+
+      if (!/^D\d{7}$/.test(driverId)) {
+        showError('Invalid format. Driver ID must be D followed by 7 digits (e.g. D1234567).');
         return;
       }
 
       btn.disabled = true;
       btn.innerHTML = '<span class="spinner"></span>Checking...';
       document.getElementById('result').className = 'result';
+      document.getElementById('result').innerHTML = '';
 
       try {
         const res = await fetch(EDGE_FUNCTION_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ license }),
+          body: JSON.stringify({ driver_id: driverId }),
         });
 
         const data = await res.json();
 
-        if (!res.ok) {
-          showResult('ineligible', 'Not Found', data.error || 'License number not found in the system.');
-        } else if (data.eligible) {
-          showResult('eligible', 'Eligible', data.instructions || 'You are eligible. Please proceed to your DSWD field office.');
+        if (!res.ok || !data.eligible) {
+          showIneligible(data.error || data.reason || 'Your Driver ID is not eligible.');
         } else {
-          showResult('ineligible', 'Not Eligible', data.reason || 'Your license number is not eligible.');
+          showEligible(data);
         }
       } catch {
-        showResult('ineligible', 'Error', 'Could not reach the server. Please try again.');
+        showError('Could not reach the server. Please try again.');
       } finally {
         btn.disabled = false;
         btn.innerHTML = 'Check Eligibility';
       }
     }
 
-    function showResult(type, title, message) {
-      document.getElementById('resultTag').textContent = type === 'eligible' ? '✓ Verified' : '✗ Not Found';
-      document.getElementById('resultTitle').textContent = title;
-      document.getElementById('resultInstructions').textContent = message;
-      document.getElementById('result').className = `result show ${type}`;
+    function showEligible(data) {
+      const result = document.getElementById('result');
+      result.className = 'result show eligible';
+      result.innerHTML = `
+        <div class="result-banner">
+          <span class="result-tag">✓ Eligible</span>
+          <span class="result-title">You're on the list</span>
+        </div>
+        <div class="result-details">
+          <div class="detail-item full-width">
+            <div class="detail-label">Full Name</div>
+            <div class="detail-value">${data.full_name}</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Date of Birth</div>
+            <div class="detail-value">${formatDate(data.dob)}</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Platform</div>
+            <div class="detail-value"><span class="platform-badge">${data.platform}</span></div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">City</div>
+            <div class="detail-value">${data.city}</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Assigned Day</div>
+            <div class="detail-value">${formatDay(data.day)}</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Time Slot</div>
+            <div class="detail-value">${formatTimeslot(data.timeslot)}</div>
+          </div>
+        </div>
+      `;
     }
 
-    document.getElementById('license').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') checkLicense();
-    });
+    function showIneligible(message) {
+      const result = document.getElementById('result');
+      result.className = 'result show ineligible';
+      result.innerHTML = `
+        <div class="result-banner">
+          <span class="result-tag">✗ Not Eligible</span>
+          <span class="result-title">Not found</span>
+        </div>
+        <div class="result-error-msg">${message}</div>
+      `;
+    }
 
+    function showError(message) {
+      const result = document.getElementById('result');
+      result.className = 'result show ineligible';
+      result.innerHTML = `
+        <div class="result-banner">
+          <span class="result-tag">✗ Error</span>
+          <span class="result-title">Check failed</span>
+        </div>
+        <div class="result-error-msg">${message}</div>
+      `;
+    }
+
+    function formatDate(dob) {
+      if (!dob) return '—';
+      const d = new Date(dob);
+      return d.toLocaleDateString('en-PH', { year: 'numeric', month: 'long', day: 'numeric' });
+    }
+
+    function formatDay(day) {
+      if (!day) return '—';
+      const d = new Date(day);
+      return d.toLocaleDateString('en-PH', { month: 'long', day: 'numeric', year: 'numeric' });
+    }
+
+    function formatTimeslot(hour) {
+      if (!hour) return '—';
+      const h = parseInt(hour);
+      const display = h > 12 ? h - 12 : h;
+      const ampm = h >= 12 ? 'PM' : 'AM';
+      return `${display}:00 ${ampm} – ${display + 1}:00 ${ampm}`;
+    }
+
+    document.getElementById('driverInput').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') checkDriver();
+    });
   </script>
 </body>
 </html>
