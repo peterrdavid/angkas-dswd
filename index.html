@@ -1,284 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Angkas–DSWD Driver Eligibility Check</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Angkas–DSWD Cash Payout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --bg: #f0f7ff;
-      --surface: #ffffff;
-      --border: #cce0f5;
-      --accent: #0ea5e9;
-      --accent-dark: #0284c7;
-      --accent-light: #e0f2fe;
-      --text: #0f172a;
-      --muted: #64748b;
-      --error-bg: #fff1f2;
-      --error-border: #fb7185;
-      --error: #e11d48;
-      --success-bg: #f0fdf4;
-      --success-border: #86efac;
-      --success: #16a34a;
-    }
+        :root {
+        --bg: #f0f7ff;
+        --surface: #ffffff;
+        --border: #cce0f5;
+        --accent: #0ea5e9;
+        --accent-dark: #0284c7;
+        --accent-light: #e0f2fe;
+        --text: #0f172a;
+        --muted: #64748b;
+        --error-bg: #fff1f2;
+        --error-border: #fb7185;
+        --error: #e11d48;
+        --success-bg: #f0fdf4;
+        --success-border: #86efac;
+        --success: #16a34a;
+        }
 
-    body {
-      background: var(--bg);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 1rem;
-    }
+        body {
+        background: var(--bg);
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        color: var(--text);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1rem;
+        }
 
-    .wrapper {
-      width: 100%;
-      max-width: 440px;
-      animation: fadeUp 0.4s ease both;
-    }
+        .wrapper {
+        width: 100%;
+        max-width: 440px;
+        animation: fadeUp 0.4s ease both;
+        }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+        @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(14px); }
+        to   { opacity: 1; transform: translateY(0); }
+        }
 
-    .logo-row {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      margin-bottom: 1.75rem;
-    }
+        .logo-row {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin-bottom: 1.75rem;
+        }
 
-    .logo-icon {
-      width: 36px;
-      height: 36px;
-      background: var(--accent);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+        .logo-icon {
+        width: 36px;
+        height: 36px;
+        background: var(--accent);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }
 
-    .logo-icon svg { width: 20px; height: 20px; fill: white; }
+        .logo-icon svg { width: 20px; height: 20px; fill: white; }
 
-    .logo-text { font-size: 1rem; font-weight: 700; color: var(--accent-dark); }
-    .logo-text span { color: var(--muted); font-weight: 500; }
+        .logo-text { font-size: 1rem; font-weight: 700; color: var(--accent-dark); }
+        .logo-text span { color: var(--muted); font-weight: 500; }
 
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2rem;
-      box-shadow: 0 4px 24px rgba(14, 165, 233, 0.08);
-    }
+        .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 4px 24px rgba(14, 165, 233, 0.08);
+        }
 
-    .card-title {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 0.35rem;
-      letter-spacing: -0.02em;
-    }
+        .card-title {
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 0.35rem;
+        letter-spacing: -0.02em;
+        }
 
-    .card-subtitle {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 1.5rem;
-      line-height: 1.5;
-    }
+        .card-subtitle {
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-bottom: 1.5rem;
+        line-height: 1.5;
+        }
 
-    .field-label {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 0.4rem;
-    }
+        .field-label {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 0.4rem;
+        }
 
-    .input-wrap {
-      position: relative;
-      margin-bottom: 0.75rem;
-    }
+        .input-wrap {
+        position: relative;
+        margin-bottom: 0.75rem;
+        }
 
-    input[type="text"] {
-      width: 100%;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 500;
-      padding: 0.7rem 1rem;
-      border: 1.5px solid var(--border);
-      border-radius: 10px;
-      background: var(--bg);
-      color: var(--text);
-      outline: none;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
+        input[type="text"] {
+        width: 100%;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 0.95rem;
+        font-weight: 500;
+        padding: 0.7rem 1rem;
+        border: 1.5px solid var(--border);
+        border-radius: 10px;
+        background: var(--bg);
+        color: var(--text);
+        outline: none;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        transition: border-color 0.2s, box-shadow 0.2s;
+        }
 
-    input[type="text"]:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.12);
-    }
+        input[type="text"]:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.12);
+        }
 
-    input[type="text"]::placeholder {
-      color: #b0c4d8;
-      text-transform: none;
-      letter-spacing: 0.01em;
-      font-weight: 400;
-    }
+        input[type="text"]::placeholder {
+        color: #b0c4d8;
+        text-transform: none;
+        letter-spacing: 0.01em;
+        font-weight: 400;
+        }
 
-    .submit-btn {
-      width: 100%;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 700;
-      padding: 0.75rem;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background 0.15s, transform 0.1s;
-    }
+        .submit-btn {
+        width: 100%;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 700;
+        padding: 0.75rem;
+        background: var(--accent);
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.15s, transform 0.1s;
+        }
 
-    .submit-btn:hover:not(:disabled) { background: var(--accent-dark); }
-    .submit-btn:active:not(:disabled) { transform: scale(0.99); }
-    .submit-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+        .submit-btn:hover:not(:disabled) { background: var(--accent-dark); }
+        .submit-btn:active:not(:disabled) { transform: scale(0.99); }
+        .submit-btn:disabled { opacity: 0.55; cursor: not-allowed; }
 
-    .spinner {
-      display: inline-block;
-      width: 14px;
-      height: 14px;
-      border: 2px solid rgba(255,255,255,0.35);
-      border-top-color: #fff;
-      border-radius: 50%;
-      animation: spin 0.6s linear infinite;
-      vertical-align: middle;
-      margin-right: 6px;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
+        .spinner {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        border: 2px solid rgba(255,255,255,0.35);
+        border-top-color: #fff;
+        border-radius: 50%;
+        animation: spin 0.6s linear infinite;
+        vertical-align: middle;
+        margin-right: 6px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* Result box */
-    .result {
-      margin-top: 1rem;
-      border-radius: 10px;
-      border: 1.5px solid var(--border);
-      display: none;
-      overflow: hidden;
-      animation: fadeUp 0.3s ease both;
-    }
+        /* Result box */
+        .result {
+        margin-top: 1rem;
+        border-radius: 10px;
+        border: 1.5px solid var(--border);
+        display: none;
+        overflow: hidden;
+        animation: fadeUp 0.3s ease both;
+        }
 
-    .result.show { display: block; }
-    .result.eligible { border-color: var(--success-border); }
-    .result.ineligible { border-color: var(--error-border); }
+        .result.show { display: block; }
+        .result.eligible { border-color: var(--success-border); }
+        .result.ineligible { border-color: var(--error-border); }
 
-    /* Status banner */
-    .result-banner {
-      padding: 0.75rem 1.1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+        /* Status banner */
+        .result-banner {
+        padding: 0.75rem 1.1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
 
-    .result.eligible .result-banner { background: var(--success-bg); }
-    .result.ineligible .result-banner { background: var(--error-bg); }
+        .result.eligible .result-banner { background: var(--success-bg); }
+        .result.ineligible .result-banner { background: var(--error-bg); }
 
-    .result-tag {
-      font-size: 0.68rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
+        .result-tag {
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        }
 
-    .result.eligible .result-tag { color: var(--success); }
-    .result.ineligible .result-tag { color: var(--error); }
+        .result.eligible .result-tag { color: var(--success); }
+        .result.ineligible .result-tag { color: var(--error); }
 
-    .result-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-    }
+        .result-title {
+        font-size: 0.9rem;
+        font-weight: 700;
+        }
 
-    .result.eligible .result-title { color: var(--success); }
-    .result.ineligible .result-title { color: var(--error); }
+        .result.eligible .result-title { color: var(--success); }
+        .result.ineligible .result-title { color: var(--error); }
 
-    /* Driver details grid */
-    .result-details {
-      padding: 1rem 1.1rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.75rem 1rem;
-      background: var(--surface);
-    }
+        /* Driver details grid */
+        .result-details {
+        padding: 1rem 1.1rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem 1rem;
+        background: var(--surface);
+        }
 
-    .detail-item {}
+        .detail-item {}
 
-    .detail-label {
-      font-size: 0.62rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      margin-bottom: 0.15rem;
-    }
+        .detail-label {
+        font-size: 0.62rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        margin-bottom: 0.15rem;
+        }
 
-    .detail-value {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--text);
-    }
+        .detail-value {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--text);
+        }
 
-    .detail-item.full-width {
-      grid-column: 1 / -1;
-    }
+        .detail-item.full-width {
+        grid-column: 1 / -1;
+        }
 
-    /* Platform badge */
-    .platform-badge {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 20px;
-      text-transform: capitalize;
-      background: var(--accent-light);
-      color: var(--accent-dark);
-    }
+        /* Platform badge */
+        .platform-badge {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 2px 8px;
+        border-radius: 20px;
+        text-transform: capitalize;
+        background: var(--accent-light);
+        color: var(--accent-dark);
+        }
 
-    /* Error message (no details) */
-    .result-error-msg {
-      padding: 0.75rem 1.1rem;
-      font-size: 0.78rem;
-      color: var(--error);
-      background: var(--error-bg);
-    }
+        /* Error message (no details) */
+        .result-error-msg {
+        padding: 0.75rem 1.1rem;
+        font-size: 0.78rem;
+        color: var(--error);
+        background: var(--error-bg);
+        }
 
-    .footer {
-      margin-top: 1.25rem;
-      font-size: 0.65rem;
-      color: var(--muted);
-      text-align: center;
-      line-height: 1.8;
-    }
-  </style>
+        .footer {
+        margin-top: 1.25rem;
+        font-size: 0.65rem;
+        color: var(--muted);
+        text-align: center;
+        line-height: 1.8;
+        }
+    </style>
 </head>
 <body>
-  <div class="wrapper">
+    <div class="wrapper">
 
     <div class="logo-row">
-      <div class="logo-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/></svg>
-      </div>
-      <div class="logo-text">Angkas <span>× DSWD</span></div>
+        <img src="angkas-logo.svg" alt="Angkas" height="32" />
     </div>
 
     <div class="card">
-      <div class="card-title">Driver Eligibility Check</div>
+      <div class="card-title">DSWD Cash Payout</div>
       <p class="card-subtitle">Enter your Driver ID to verify your eligibility.</p>
 
       <label class="field-label" for="driverInput">Driver ID</label>
@@ -302,7 +299,7 @@
 
     <div class="footer">
       Handled in accordance with RA 10173 · Data Privacy Act of 2012<br>
-      For concerns, contact Angkas HQ.
+      For concerns, contact Angkas.
     </div>
   </div>
 
@@ -320,7 +317,7 @@
       }
 
       if (!/^D\d{7}$/.test(driverId)) {
-        showError('Invalid format. Driver ID must be D followed by 7 digits (e.g. D1234567).');
+        showError('Driver ID must be D followed by 7 digits (e.g. D1234567).');
         return;
       }
 
@@ -356,31 +353,30 @@
       result.className = 'result show eligible';
       result.innerHTML = `
         <div class="result-banner">
-          <span class="result-tag">✓ Eligible</span>
-          <span class="result-title">You're on the list</span>
+          <span class="result-tag">Eligible</span>
         </div>
         <div class="result-details">
           <div class="detail-item full-width">
             <div class="detail-label">Full Name</div>
             <div class="detail-value">${data.full_name}</div>
           </div>
-          <div class="detail-item">
+          <div class="detail-item full-width">
             <div class="detail-label">Date of Birth</div>
             <div class="detail-value">${formatDate(data.dob)}</div>
           </div>
-          <div class="detail-item">
+          <div class="detail-item full-width">
             <div class="detail-label">Platform</div>
-            <div class="detail-value"><span class="platform-badge">${data.platform}</span></div>
+            <div class="detail-value">${data.platform}</div>
           </div>
-          <div class="detail-item">
+          <div class="detail-item full-width">
             <div class="detail-label">City</div>
             <div class="detail-value">${data.city}</div>
           </div>
-          <div class="detail-item">
+          <div class="detail-item full-width">
             <div class="detail-label">Assigned Day</div>
             <div class="detail-value">${formatDay(data.day)}</div>
           </div>
-          <div class="detail-item">
+          <div class="detail-item full-width">
             <div class="detail-label">Time Slot</div>
             <div class="detail-value">${formatTimeslot(data.timeslot)}</div>
           </div>
@@ -393,8 +389,7 @@
       result.className = 'result show ineligible';
       result.innerHTML = `
         <div class="result-banner">
-          <span class="result-tag">✗ Not Eligible</span>
-          <span class="result-title">Not found</span>
+          <span class="result-tag">Not Eligible</span>
         </div>
         <div class="result-error-msg">${message}</div>
       `;
@@ -405,8 +400,7 @@
       result.className = 'result show ineligible';
       result.innerHTML = `
         <div class="result-banner">
-          <span class="result-tag">✗ Error</span>
-          <span class="result-title">Check failed</span>
+          <span class="result-tag">Error</span>
         </div>
         <div class="result-error-msg">${message}</div>
       `;
