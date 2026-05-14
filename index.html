@@ -9,143 +9,125 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-        --bg: #f0f7ff;
-        --surface: #ffffff;
-        --border: #cce0f5;
-        --accent: #0ea5e9;
-        --accent-dark: #0284c7;
-        --accent-light: #e0f2fe;
-        --text: #0f172a;
-        --muted: #64748b;
-        --error-bg: #fff1f2;
-        --error-border: #fb7185;
-        --error: #e11d48;
-        --success-bg: #f0fdf4;
-        --success-border: #86efac;
-        --success: #16a34a;
+            --bg: #f0f7ff;
+            --surface: #ffffff;
+            --border: #cce0f5;
+            --accent: #0ea5e9;
+            --accent-dark: #0284c7;
+            --accent-light: #e0f2fe;
+            --text: #0f172a;
+            --muted: #64748b;
+            --error-bg: #fff1f2;
+            --error-border: #fb7185;
+            --error: #e11d48;
+            --success-bg: #f0fdf4;
+            --success-border: #86efac;
+            --success: #16a34a;
         }
 
         body {
-        background: var(--bg);
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        color: var(--text);
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem 1rem;
-        }
-
-        .wrapper {
-        width: 100%;
-        max-width: 440px;
-        animation: fadeUp 0.4s ease both;
+            background: var(--bg);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
         }
 
         @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(14px); }
-        to   { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         .logo-row {
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-        margin-bottom: 1.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 1.75rem;
         }
-
-        .logo-icon {
-        width: 36px;
-        height: 36px;
-        background: var(--accent);
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        }
-
-        .logo-icon svg { width: 20px; height: 20px; fill: white; }
-
-        .logo-text { font-size: 1rem; font-weight: 700; color: var(--accent-dark); }
-        .logo-text span { color: var(--muted); font-weight: 500; }
 
         .card {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 2rem;
-        box-shadow: 0 4px 24px rgba(14, 165, 233, 0.08);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 24px rgba(14, 165, 233, 0.08);
         }
 
         .card-title {
-        font-size: 1.35rem;
-        font-weight: 700;
-        color: var(--text);
-        margin-bottom: 0.35rem;
-        letter-spacing: -0.02em;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.35rem;
+            letter-spacing: -0.02em;
         }
 
         .card-subtitle {
-        font-size: 0.8rem;
-        color: var(--muted);
-        margin-bottom: 1.5rem;
-        line-height: 1.5;
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
         }
 
         .field-label {
-        display: block;
-        font-size: 0.75rem;
-        font-weight: 600;
-        color: var(--text);
-        margin-bottom: 0.4rem;
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.4rem;
         }
 
         .input-wrap {
-        position: relative;
-        margin-bottom: 0.75rem;
+            position: relative;
+            margin-bottom: 0.75rem;
         }
 
-        input[type="text"] {
-        width: 100%;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 0.95rem;
-        font-weight: 500;
-        padding: 0.7rem 1rem;
-        border: 1.5px solid var(--border);
-        border-radius: 10px;
-        background: var(--bg);
-        color: var(--text);
-        outline: none;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-        transition: border-color 0.2s, box-shadow 0.2s;
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 0.7rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            background: var(--bg);
+            color: var(--text);
+            outline: none;
+            letter-spacing: 0.06em;
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
 
-        input[type="text"]:focus {
-        border-color: var(--accent);
-        box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.12);
+        input[type="text"] { text-transform: uppercase; }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.12);
         }
 
-        input[type="text"]::placeholder {
-        color: #b0c4d8;
-        text-transform: none;
-        letter-spacing: 0.01em;
-        font-weight: 400;
+        input::placeholder {
+            color: #b0c4d8;
+            text-transform: none;
+            letter-spacing: 0.01em;
+            font-weight: 400;
         }
 
         .submit-btn {
-        width: 100%;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 0.9rem;
-        font-weight: 700;
-        padding: 0.75rem;
-        background: var(--accent);
-        color: #fff;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: background 0.15s, transform 0.1s;
+            width: 100%;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            padding: 0.75rem;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.15s, transform 0.1s;
         }
 
         .submit-btn:hover:not(:disabled) { background: var(--accent-dark); }
@@ -153,282 +135,298 @@
         .submit-btn:disabled { opacity: 0.55; cursor: not-allowed; }
 
         .spinner {
-        display: inline-block;
-        width: 14px;
-        height: 14px;
-        border: 2px solid rgba(255,255,255,0.35);
-        border-top-color: #fff;
-        border-radius: 50%;
-        animation: spin 0.6s linear infinite;
-        vertical-align: middle;
-        margin-right: 6px;
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 2px solid rgba(255,255,255,0.35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            vertical-align: middle;
+            margin-right: 6px;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* Result box */
         .result {
-        margin-top: 1rem;
-        border-radius: 10px;
-        border: 1.5px solid var(--border);
-        display: none;
-        overflow: hidden;
-        animation: fadeUp 0.3s ease both;
+            margin-top: 1rem;
+            border-radius: 10px;
+            border: 1.5px solid var(--border);
+            display: none;
+            overflow: hidden;
+            animation: fadeUp 0.3s ease both;
         }
 
         .result.show { display: block; }
         .result.eligible { border-color: var(--success-border); }
         .result.ineligible { border-color: var(--error-border); }
 
-        /* Status banner */
         .result-banner {
-        padding: 0.75rem 1.1rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
+            padding: 0.75rem 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .result.eligible .result-banner { background: var(--success-bg); }
         .result.ineligible .result-banner { background: var(--error-bg); }
 
         .result-tag {
-        font-size: 0.68rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
         }
 
         .result.eligible .result-tag { color: var(--success); }
         .result.ineligible .result-tag { color: var(--error); }
 
-        .result-title {
-        font-size: 0.9rem;
-        font-weight: 700;
-        }
-
-        .result.eligible .result-title { color: var(--success); }
-        .result.ineligible .result-title { color: var(--error); }
-
-        /* Driver details grid */
         .result-details {
-        padding: 1rem 1.1rem;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.75rem 1rem;
-        background: var(--surface);
+            padding: 1rem 1.1rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem 1rem;
+            background: var(--surface);
         }
-
-        .detail-item {}
 
         .detail-label {
-        font-size: 0.62rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--muted);
-        margin-bottom: 0.15rem;
+            font-size: 0.62rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+            margin-bottom: 0.15rem;
         }
 
         .detail-value {
-        font-size: 0.82rem;
-        font-weight: 600;
-        color: var(--text);
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text);
         }
 
-        .detail-item.full-width {
-        grid-column: 1 / -1;
-        }
+        .detail-item.full-width { grid-column: 1 / -1; }
 
-        /* Platform badge */
-        .platform-badge {
-        display: inline-block;
-        font-size: 0.72rem;
-        font-weight: 700;
-        padding: 2px 8px;
-        border-radius: 20px;
-        text-transform: capitalize;
-        background: var(--accent-light);
-        color: var(--accent-dark);
-        }
-
-        /* Error message (no details) */
         .result-error-msg {
-        padding: 0.75rem 1.1rem;
-        font-size: 0.78rem;
-        color: var(--error);
-        background: var(--error-bg);
+            padding: 0.75rem 1.1rem;
+            font-size: 0.78rem;
+            color: var(--error);
+            background: var(--error-bg);
         }
 
         .footer {
-        margin-top: 1.25rem;
-        font-size: 0.65rem;
-        color: var(--muted);
-        text-align: center;
-        line-height: 1.8;
+            margin-top: 1.25rem;
+            font-size: 0.65rem;
+            color: var(--muted);
+            text-align: center;
+            line-height: 1.8;
         }
+
+        /* =====================================================
+           PASSWORD GATE STYLES
+           ===================================================== */
+        #password-gate {
+            width: 100%;
+            max-width: 440px;
+            animation: fadeUp 0.4s ease both;
+        }
+
+        #main-app { display: none; width: 100%; max-width: 440px; }
+        #main-app.unlocked { display: block; animation: fadeUp 0.4s ease both; }
+
+        .pw-error {
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--error);
+            font-weight: 500;
+            text-align: center;
+            display: none;
+        }
+        .pw-error.show { display: block; }
+        /* ===================================================== */
     </style>
 </head>
 <body>
-    <div class="wrapper">
 
-    <div class="logo-row">
-        <img src="angkas-logo.svg" alt="Angkas" height="32" />
+    <!-- =====================================================
+         PASSWORD GATE
+         ===================================================== -->
+    <div id="password-gate">
+            <label class="field-label" for="passwordInput">Password</label>
+            <div class="input-wrap">
+                <input
+                    type="password"
+                    id="passwordInput"
+                    placeholder="Enter password"
+                    autocomplete="off"
+                />
+            </div>
+            <button class="submit-btn" onclick="checkPassword()">Enter</button>
+            <div class="pw-error" id="pwError">Incorrect password. Please try again.</div>
+    </div>
+    <!-- ===================================================== -->
+
+    <div id="main-app">
+        <div class="logo-row">
+            <img src="angkas-logo.svg" alt="Angkas" height="32" />
+        </div>
+        <div class="card">
+            <div class="card-title">DSWD Cash Payout</div>
+            <p class="card-subtitle">Enter your Driver ID to verify your eligibility.</p>
+
+            <label class="field-label" for="driverInput">Driver ID</label>
+            <div class="input-wrap">
+                <input
+                    type="text"
+                    id="driverInput"
+                    placeholder="e.g. D1234567"
+                    maxlength="8"
+                    autocomplete="off"
+                    spellcheck="false"
+                />
+            </div>
+
+            <button class="submit-btn" id="submitBtn" onclick="checkDriver()">Check Eligibility</button>
+            <div class="result" id="result"></div>
+        </div>
+
+        <div class="footer">
+            Handled in accordance with RA 10173 · Data Privacy Act of 2012<br>
+            For concerns, contact Angkas.
+        </div>
     </div>
 
-    <div class="card">
-      <div class="card-title">DSWD Cash Payout</div>
-      <p class="card-subtitle">Enter your Driver ID to verify your eligibility.</p>
+    <script>
+        const EDGE_FUNCTION_URL = 'https://khnflhnjcedxkkxgawwf.supabase.co/functions/v1/check-license';
 
-      <label class="field-label" for="driverInput">Driver ID</label>
-      <div class="input-wrap">
-        <input
-          type="text"
-          id="driverInput"
-          placeholder="e.g. D1234567"
-          maxlength="8"
-          autocomplete="off"
-          spellcheck="false"
-        />
-      </div>
+        /* =====================================================
+           PASSWORD GATE LOGIC
+           ===================================================== */
+        const SITE_PASSWORD = '@ngkas!';
 
-      <button class="submit-btn" id="submitBtn" onclick="checkDriver()">Check Eligibility</button>
-
-      <div class="result" id="result">
-        <!-- Filled by JS -->
-      </div>
-    </div>
-
-    <div class="footer">
-      Handled in accordance with RA 10173 · Data Privacy Act of 2012<br>
-      For concerns, contact Angkas.
-    </div>
-  </div>
-
-  <script>
-    const EDGE_FUNCTION_URL = 'https://khnflhnjcedxkkxgawwf.supabase.co/functions/v1/check-license';
-
-    async function checkDriver() {
-      const input = document.getElementById('driverInput');
-      const btn = document.getElementById('submitBtn');
-      const driverId = input.value.trim().toUpperCase();
-
-      if (!driverId) {
-        showError('Please enter your Driver ID.');
-        return;
-      }
-
-      if (!/^D\d{7}$/.test(driverId)) {
-        showError('Driver ID must be D followed by 7 digits (e.g. D1234567).');
-        return;
-      }
-
-      btn.disabled = true;
-      btn.innerHTML = '<span class="spinner"></span>Checking...';
-      document.getElementById('result').className = 'result';
-      document.getElementById('result').innerHTML = '';
-
-      try {
-        const res = await fetch(EDGE_FUNCTION_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ driver_id: driverId }),
-        });
-
-        const data = await res.json();
-
-        if (!res.ok || !data.eligible) {
-          showIneligible(data.error || data.reason || 'Your Driver ID is not eligible.');
-        } else {
-          showEligible(data);
+        function checkPassword() {
+            const input = document.getElementById('passwordInput');
+            const error = document.getElementById('pwError');
+            if (input.value === SITE_PASSWORD) {
+                document.getElementById('password-gate').style.display = 'none';
+                document.getElementById('main-app').classList.add('unlocked');
+            } else {
+                input.value = '';
+                input.focus();
+                error.classList.add('show');
+                setTimeout(() => error.classList.remove('show'), 3000);
+            }
         }
-      } catch {
-        showError('Could not reach the server. Please try again.');
-      } finally {
-        btn.disabled = false;
-        btn.innerHTML = 'Check Eligibility';
-      }
-    }
 
-    function showEligible(data) {
-      const result = document.getElementById('result');
-      result.className = 'result show eligible';
-      result.innerHTML = `
-        <div class="result-banner">
-          <span class="result-tag">Eligible</span>
-        </div>
-        <div class="result-details">
-          <div class="detail-item full-width">
-            <div class="detail-label">Full Name</div>
-            <div class="detail-value">${data.full_name}</div>
-          </div>
-          <div class="detail-item full-width">
-            <div class="detail-label">Date of Birth</div>
-            <div class="detail-value">${formatDate(data.dob)}</div>
-          </div>
-          <div class="detail-item full-width">
-            <div class="detail-label">Platform</div>
-            <div class="detail-value">${data.platform}</div>
-          </div>
-          <div class="detail-item full-width">
-            <div class="detail-label">City</div>
-            <div class="detail-value">${data.city}</div>
-          </div>
-          <div class="detail-item full-width">
-            <div class="detail-label">Assigned Day</div>
-            <div class="detail-value">${formatDay(data.day)}</div>
-          </div>
-          <div class="detail-item full-width">
-            <div class="detail-label">Time Slot</div>
-            <div class="detail-value">${formatTimeslot(data.timeslot)}</div>
-          </div>
-        </div>
-      `;
-    }
+        document.getElementById('passwordInput').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') checkPassword();
+        });
+        /* ===================================================== */
 
-    function showIneligible(message) {
-      const result = document.getElementById('result');
-      result.className = 'result show ineligible';
-      result.innerHTML = `
-        <div class="result-banner">
-          <span class="result-tag">Not Eligible</span>
-        </div>
-        <div class="result-error-msg">${message}</div>
-      `;
-    }
+        async function checkDriver() {
+            const input = document.getElementById('driverInput');
+            const btn = document.getElementById('submitBtn');
+            const driverId = input.value.trim().toUpperCase();
 
-    function showError(message) {
-      const result = document.getElementById('result');
-      result.className = 'result show ineligible';
-      result.innerHTML = `
-        <div class="result-banner">
-          <span class="result-tag">Error</span>
-        </div>
-        <div class="result-error-msg">${message}</div>
-      `;
-    }
+            if (!driverId) { showError('Please enter your Driver ID.'); return; }
+            if (!/^D\d{7}$/.test(driverId)) {
+                showError('Driver ID must be D followed by 7 digits (e.g. D1234567).');
+                return;
+            }
 
-    function formatDate(dob) {
-      if (!dob) return '—';
-      const d = new Date(dob);
-      return d.toLocaleDateString('en-PH', { year: 'numeric', month: 'long', day: 'numeric' });
-    }
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner"></span>Checking...';
+            document.getElementById('result').className = 'result';
+            document.getElementById('result').innerHTML = '';
 
-    function formatDay(day) {
-      if (!day) return '—';
-      const d = new Date(day);
-      return d.toLocaleDateString('en-PH', { month: 'long', day: 'numeric', year: 'numeric' });
-    }
+            try {
+                const res = await fetch(EDGE_FUNCTION_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ driver_id: driverId }),
+                });
+                const data = await res.json();
+                if (!res.ok || !data.eligible) {
+                    showIneligible(data.error || data.reason || 'Your Driver ID is not eligible.');
+                } else {
+                    showEligible(data);
+                }
+            } catch {
+                showError('Could not reach the server. Please try again.');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = 'Check Eligibility';
+            }
+        }
 
-    function formatTimeslot(hour) {
-      if (!hour) return '—';
-      const h = parseInt(hour);
-      const display = h > 12 ? h - 12 : h;
-      const ampm = h >= 12 ? 'PM' : 'AM';
-      return `${display}:00 ${ampm} – ${display + 1}:00 ${ampm}`;
-    }
+        function showEligible(data) {
+            const result = document.getElementById('result');
+            result.className = 'result show eligible';
+            result.innerHTML = `
+                <div class="result-banner"><span class="result-tag">✓ Eligible</span></div>
+                <div class="result-details">
+                    <div class="detail-item full-width">
+                        <div class="detail-label">Full Name</div>
+                        <div class="detail-value">${data.full_name}</div>
+                    </div>
+                    <div class="detail-item full-width">
+                        <div class="detail-label">Date of Birth</div>
+                        <div class="detail-value">${formatDate(data.dob)}</div>
+                    </div>
+                    <div class="detail-item full-width">
+                        <div class="detail-label">Platform</div>
+                        <div class="detail-value">${data.platform}</div>
+                    </div>
+                    <div class="detail-item full-width">
+                        <div class="detail-label">City</div>
+                        <div class="detail-value">${data.city}</div>
+                    </div>
+                    <div class="detail-item full-width">
+                        <div class="detail-label">Assigned Day</div>
+                        <div class="detail-value">${formatDay(data.day)}</div>
+                    </div>
+                    <div class="detail-item full-width">
+                        <div class="detail-label">Time Slot</div>
+                        <div class="detail-value">${formatTimeslot(data.timeslot)}</div>
+                    </div>
+                </div>`;
+        }
 
-    document.getElementById('driverInput').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') checkDriver();
-    });
-  </script>
+        function showIneligible(message) {
+            const result = document.getElementById('result');
+            result.className = 'result show ineligible';
+            result.innerHTML = `
+                <div class="result-banner"><span class="result-tag">✗ Not Eligible</span></div>
+                <div class="result-error-msg">${message}</div>`;
+        }
+
+        function showError(message) {
+            const result = document.getElementById('result');
+            result.className = 'result show ineligible';
+            result.innerHTML = `
+                <div class="result-banner"><span class="result-tag">✗ Error</span></div>
+                <div class="result-error-msg">${message}</div>`;
+        }
+
+        function formatDate(dob) {
+            if (!dob) return '—';
+            return new Date(dob).toLocaleDateString('en-PH', { year: 'numeric', month: 'long', day: 'numeric' });
+        }
+
+        function formatDay(day) {
+            if (!day) return '—';
+            return new Date(day).toLocaleDateString('en-PH', { month: 'long', day: 'numeric', year: 'numeric' });
+        }
+
+        function formatTimeslot(hour) {
+            if (!hour) return '—';
+            const h = parseInt(hour);
+            const display = h > 12 ? h - 12 : h;
+            const ampm = h >= 12 ? 'PM' : 'AM';
+            return `${display}:00 ${ampm} – ${display + 1}:00 ${ampm}`;
+        }
+
+        document.getElementById('driverInput').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') checkDriver();
+        });
+    </script>
 </body>
 </html>
