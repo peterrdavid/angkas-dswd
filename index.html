@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Angkas–DSWD Cash Payout</title>
+    <title>Angkas - DSWD Cash Relief Assistance</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <style>
@@ -70,6 +70,53 @@
             font-size: 0.8rem;
             color: var(--muted);
             margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        /* Instructions block */
+        .instructions-block {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem 1.1rem;
+            margin-bottom: 1.25rem;
+            font-size: 0.78rem;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        .instructions-intro {
+            font-weight: 600;
+            margin-bottom: 0.85rem;
+            color: var(--text);
+        }
+
+        .instructions-section {
+            margin-bottom: 0.75rem;
+        }
+
+        .instructions-heading {
+            font-weight: 600;
+            margin-bottom: 0.35rem;
+        }
+
+        .instructions-block ul {
+            padding-left: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .instructions-block ul li {
+            margin-bottom: 0.2rem;
+        }
+
+        .reminder {
+            margin-top: 0.75rem;
+            padding: 0.6rem 0.8rem;
+            background: #fff8e1;
+            border-left: 3px solid #f59e0b;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: #92400e;
             line-height: 1.5;
         }
 
@@ -331,10 +378,43 @@
             <img src="angkas-logo.svg" alt="Angkas" height="32" />
         </div>
         <div class="card">
-            <div class="card-title">DSWD Cash Payout</div>
-            <p class="card-subtitle">Enter your Driver ID to verify your eligibility.</p>
+            <div class="card-title">DSWD Cash Relief Assistance</div>
 
-            <label class="field-label" for="driverInput">Driver ID</label>
+            <div class="instructions-block">
+                <p class="instructions-intro">Siguraduhing kumpleto ang dalang requirements at umiwas sa mga bawal dalhin.</p>
+
+                <div class="instructions-section">
+                    <p class="instructions-heading">✅ <strong>Dalhin ang mga sumusunod:</strong></p>
+                    <ul>
+                        <li>Valid driver's license + photocopy (may 3 pirma)</li>
+                        <li>Screenshot ng PN</li>
+                        <li>Water jug (may mga water refilling station na inilalagay sa venue)</li>
+                        <li>Payong</li>
+                    </ul>
+                </div>
+
+                <div class="instructions-section">
+                    <p class="instructions-heading">🚫 <strong>Bawal ang mga sumusunod:</strong></p>
+                    <ul>
+                        <li>Sigarilyo at vape</li>
+                        <li>Mga patalim</li>
+                    </ul>
+                </div>
+
+                <div class="reminder">
+                    <strong>Paalala:</strong> Bawal ang walk-ins at hindi pinapayagan ang pag-claim sa mga petsang hindi nakatalaga sa inyo.
+                </div>
+            </div>
+
+
+            <p class="card-subtitle">
+                Hanapin ang pangalan at schedule ninyo gamit ang Biker Number.
+            </p>
+            
+            <label class="field-label" for="driverInput">
+                Biker Number
+            </label>
+
             <div class="input-wrap">
                 <input
                     type="text"
@@ -346,7 +426,14 @@
                 />
             </div>
 
-            <button class="submit-btn" id="submitBtn" onclick="checkDriver()">Check Eligibility</button>
+            <button
+                class="submit-btn"
+                id="submitBtn"
+                onclick="checkDriver()"
+            >
+                Check Eligibility
+            </button>
+
             <div class="result" id="result"></div>
         </div>
 
