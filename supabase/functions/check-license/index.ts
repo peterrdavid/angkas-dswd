@@ -45,7 +45,7 @@ Deno.serve(async (req) => {
 
     const { data, error } = await supabase
       .from('drivers')
-      .select('full_name, dob, platform, city, day, timeslot, status')
+      .select('full_name, dob, platform, day, timeslot, payroll, paymaster, status')
       .eq('driver_id', driverId)
       .single()
 
@@ -71,9 +71,10 @@ Deno.serve(async (req) => {
       full_name: data.full_name,
       dob: data.dob,
       platform: data.platform,
-      city: data.city,
       day: data.day,
       timeslot: data.timeslot,
+      payroll: data.payroll,
+      paymaster: data.paymaster
     }), {
       status: 200,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
