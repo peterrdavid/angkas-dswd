@@ -205,6 +205,62 @@
 
         .detail-item.full-width { grid-column: 1 / -1; }
 
+        /* Not eligible message */
+        .ineligible-body {
+            padding: 1rem 1.1rem;
+            background: var(--surface);
+            font-size: 0.78rem;
+            line-height: 1.7;
+            color: var(--text);
+        }
+
+        .ineligible-body p {
+            margin-bottom: 0.6rem;
+        }
+
+        .ineligible-body ul {
+            padding-left: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .ineligible-body ul li {
+            margin-bottom: 0.3rem;
+        }
+
+        .ineligible-body .form-note {
+            margin-top: 0.75rem;
+            padding: 0.75rem;
+            background: #ffe4e8;
+            border-radius: 8px;
+            border-left: 3px solid var(--error);
+            font-size: 0.75rem;
+        }
+
+        .ineligible-body .form-note strong {
+            display: block;
+            margin-bottom: 0.3rem;
+            color: var(--error);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .ineligible-body .form-note ul {
+            margin-bottom: 0.5rem;
+        }
+
+        .form-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: var(--accent-dark);
+            font-weight: 700;
+            font-size: 0.78rem;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .form-link:hover { text-decoration: underline; }
+
         .result-error-msg {
             padding: 0.75rem 1.1rem;
             font-size: 0.78rem;
@@ -221,7 +277,7 @@
         }
 
         /* =====================================================
-           PASSWORD GATE STYLES
+           PASSWORD GATE STYLES — TO REMOVE: delete this block
            ===================================================== */
         #password-gate {
             width: 100%;
@@ -247,9 +303,13 @@
 <body>
 
     <!-- =====================================================
-         PASSWORD GATE
+         PASSWORD GATE — TO REMOVE: delete this entire div
          ===================================================== -->
     <div id="password-gate">
+        <div class="logo-row">
+            <img src="angkas-logo.svg" alt="Angkas" height="32" />
+        </div>
+        <div class="card">
             <label class="field-label" for="passwordInput">Password</label>
             <div class="input-wrap">
                 <input
@@ -261,6 +321,7 @@
             </div>
             <button class="submit-btn" onclick="checkPassword()">Enter</button>
             <div class="pw-error" id="pwError">Incorrect password. Please try again.</div>
+        </div>
     </div>
     <!-- ===================================================== -->
 
@@ -297,8 +358,11 @@
     <script>
         const EDGE_FUNCTION_URL = 'https://khnflhnjcedxkkxgawwf.supabase.co/functions/v1/check-license';
 
+        // ⚠️ Update this to the actual Google Form link
+        const GOOGLE_FORM_LINK = 'https://forms.gle/XXXXXXX';
+
         /* =====================================================
-           PASSWORD GATE LOGIC
+           PASSWORD GATE LOGIC — TO REMOVE: delete this block
            ===================================================== */
         const SITE_PASSWORD = '@ngkas!';
 
@@ -345,7 +409,7 @@
                 });
                 const data = await res.json();
                 if (!res.ok || !data.eligible) {
-                    showIneligible(data.error || data.reason || 'Your Driver ID is not eligible.');
+                    showIneligible();
                 } else {
                     showEligible(data);
                 }
@@ -390,12 +454,31 @@
                 </div>`;
         }
 
-        function showIneligible(message) {
+        function showIneligible() {
             const result = document.getElementById('result');
             result.className = 'result show ineligible';
             result.innerHTML = `
-                <div class="result-banner"><span class="result-tag">✗ Not Eligible</span></div>
-                <div class="result-error-msg">${message}</div>`;
+                <div class="result-banner">
+                    <span class="result-tag">✗ Not Eligible</span>
+                </div>
+                <div class="ineligible-body">
+                    <p>Ka-Dax, kung hindi mo makita ang iyong pangalan sa claiming tracker, maaaring dahil:</p>
+                    <ul>
+                        <li>Nakakuha ka na ng cash relief assistance sa nakaraang payout.</li>
+                        <li>Kasama ka sa listahan na ilalabas ng ibang TNCs sa mga darating na araw.</li>
+                        <li>Naka-assign ka sa Non-NCR sites, kaya hintayin ang hiwalay na anunsyo para dito.</li>
+                    </ul>
+                    <div class="form-note">
+                        <p>Mangyaring sagutan ang form na ito kapag NOT ELIGIBLE ang lumalabas kahit na:</p>
+                        <ul>
+                            <li>HINDI ka pa nakakuha noong nakaraang payout.</li>
+                            <li>Naka-register ang iyong lisensya sa GMM areas.</li>
+                        </ul>
+                        <a class="form-link" href="${GOOGLE_FORM_LINK}" target="_blank" rel="noopener">
+                            [Form Link]
+                        </a>
+                    </div>
+                </div>`;
         }
 
         function showError(message) {
